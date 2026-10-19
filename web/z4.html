@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers Z4 | Urban Void</title>
+    <link rel="stylesheet" href="../Estilos/estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+               <div class="nav-links">
+                <a href="../index.html">Inicio</a>
+                <a href="Camisas.html">Apparel</a>
+                <a href="Pantalones.html">Bottoms</a>
+                <a href="Zapatos.html">Sneakers</a>
+            </div>
+
+
+            <div class="header-cart">
+                <a class="btn-cart-header" href="carrito.html">
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="producto-detalle">
+            <img src="../Imagenes/Z4.jpeg" alt="Sneakers Z4">
+
+            <div class="producto-info-detalle">
+                <p class="descripcion">La legendaria tecnología de amortiguación japonesa presente en íconos urbanos como los GEL-Kayano, GEL-NYC y GEL-1130. Incorpora gel a base de silicona que absorbe impactos, ofreciendo máximo confort y un estilo techwear imbatible.</p>
+
+                <div class="product-card" data-id="z4" data-name="Sneakers Z4" data-price="100.00">
+                    <div class="price-tag">
+                        Precio: $<span id="product-price">100.00</span>
+                    </div>
+
+                    <div class="size-selector">
+                        <label for="size">Talla:</label>
+                        <select id="size" onchange="updatePrice()">
+                            <option value="7" data-price="100.00">7 - $100.00</option>
+                            <option value="8" data-price="100.00">8 - $100.00</option>
+                            <option value="9" data-price="100.00" selected>9 - $100.00</option>
+                            <option value="10" data-price="100.00">10 - $100.00</option>
+                            <option value="11" data-price="100.00">11 - $100.00</option>
+                            <option value="12" data-price="100.00">12 - $100.00</option>
+                        </select>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-cart" onclick="addToCart()">Agregar al carrito</button>
+                        <button class="btn-buy" onclick="buyNow()">Comprar ahora</button>
+                    </div>
+                </div>
+
+                <button class="btn-volver" onclick="window.history.back();">VOLVER</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="carrito.js"></script>
+</body>
+</html>

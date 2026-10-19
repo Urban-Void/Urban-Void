@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Void</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+
+ 
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="web/Camisas.html">Apparel</a>
+                <a href="web/Pantalones.html">Bottoms</a>
+                <a href="web/Zapatos.html">Sneakers</a>
+            </div>
+
+            <div class="header-cart">
+                <a class="btn-cart-header" href="web/carrito.html">
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
+<main>
+    <section class="portada">
+        <p class="portada-etiqueta">Streetwear · Y2K · Underground</p>
+        <h1>URBAN <span>VOID</span></h1>
+        <p class="portada-lema">Ropa y calzado para quienes no encajan en el molde.</p>
+        <p class="portada-texto">
+            Somos una tienda online de moda urbana de estética oscura.
+            Camisas con estampados únicos, pantalones con carácter y sneakers
+            para completar tu outfit, todo en un solo lugar.
+        </p>
+
+        <ul class="portada-ofertas">
+            <li><strong>Apparel</strong> Camisas y estampados</li>
+            <li><strong>Bottoms</strong> Pantalones de estilo</li>
+            <li><strong>Sneakers</strong> Calzado urbano</li>
+        </ul>
+
+    </section>
+
+    <main>
+        <section class="carrusel" aria-label="Productos destacados">
+            <div class="carrusel-pista">
+                <a class="carrusel-slide" href="web/Camisas.html">
+                    <img src="Imagenes/C7.jpg" alt="Camisa negra con estampado">
+                    <span>Apparel</span>
+                </a>
+                </a>
+                <a class="carrusel-slide" href="web/Pantalones.html">
+                    <img src="Imagenes/P6.jpeg" alt="Pantalón con alas y calaveras">
+                    <span>Bottoms</span>
+                </a>
+                <a class="carrusel-slide" href="web/Zapatos.html">
+                    <img src="Imagenes/Z6.jpg" alt="Zapatillas negras">
+                    <span>Sneakers</span>
+                </a>
+            </div>
+
+            <button class="carrusel-btn prev" aria-label="Anterior">&#10094;</button>
+            <button class="carrusel-btn next" aria-label="Siguiente">&#10095;</button>
+            <div class="carrusel-dots"></div>
+        </section>
+    </main>
+
+    <script src="web/carrito.js"></script>
+    <script>
+        (function () {
+            const carrusel = document.querySelector('.carrusel');
+            const pista = carrusel.querySelector('.carrusel-pista');
+            const total = pista.children.length;
+            const dotsBox = carrusel.querySelector('.carrusel-dots');
+            let actual = 0;
+            let timer;
+
+    
+            for (let i = 0; i < total; i++) {
+                const dot = document.createElement('button');
+                dot.setAttribute('aria-label', 'Ir a la imagen ' + (i + 1));
+                dot.onclick = () => { ir(i); reiniciar(); };
+                dotsBox.appendChild(dot);
+            }
+
+            function ir(n) {
+                actual = (n + total) % total;
+                pista.style.transform = 'translateX(-' + actual * 100 + '%)';
+                dotsBox.querySelectorAll('button').forEach((d, i) =>
+                    d.classList.toggle('activo', i === actual));
+            }
+
+            function reiniciar() {
+                clearInterval(timer);
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                timer = setInterval(() => ir(actual + 1), 4000);
+            }
+
+            carrusel.querySelector('.prev').onclick = () => { ir(actual - 1); reiniciar(); };
+            carrusel.querySelector('.next').onclick = () => { ir(actual + 1); reiniciar(); };
+
+            carrusel.addEventListener('mouseenter', () => clearInterval(timer));
+            carrusel.addEventListener('mouseleave', reiniciar);
+            carrusel.addEventListener('focusin', () => clearInterval(timer));
+            carrusel.addEventListener('focusout', reiniciar);
+
+            ir(0);
+            reiniciar();
+        })();
+    </script>
+</body>
+</html>

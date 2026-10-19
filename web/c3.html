@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Faith | Urban Void</title>
+    <link rel="stylesheet" href="../Estilos/estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+                   <div class="nav-links">
+                <a href="../index.html">Inicio</a>
+                <a href="Camisas.html">Apparel</a>
+                <a href="Pantalones.html">Bottoms</a>
+                <a href="Zapatos.html">Sneakers</a>
+            </div>
+
+
+            <div class="header-cart">
+                <a class="btn-cart-header" href="carrito.html">
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="producto-detalle">
+            <img src="../Imagenes/C3.jpeg" alt="Blue Faith">
+
+            <div class="producto-info-detalle">
+                <p class="descripcion">Playera azul con efecto desgastado que destaca por un impresionante gráfico frontal de alas, una gran cruz central y el logo de la marca en estilo gótico.</p>
+
+                <div class="product-card" data-id="c3" data-name="Blue Faith" data-price="34.99">
+                    <div class="price-tag">
+                        Precio: $<span id="product-price">34.99</span>
+                    </div>
+
+                    <div class="size-selector">
+                        <label for="size">Talla:</label>
+                        <select id="size" onchange="updatePrice()">
+                            <option value="S" data-price="34.99">S - $34.99</option>
+                            <option value="M" data-price="34.99" selected>M - $34.99</option>
+                            <option value="L" data-price="34.99">L - $34.99</option>
+                            <option value="XL" data-price="34.99">XL - $34.99</option>
+                        </select>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-cart" onclick="addToCart()">Agregar al carrito</button>
+                        <button class="btn-buy" onclick="buyNow()">Comprar ahora</button>
+                    </div>
+                </div>
+
+                <button class="btn-volver" onclick="window.history.back();">VOLVER</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="carrito.js"></script>
+</body>
+</html>

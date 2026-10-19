@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noir Strike | Urban Void</title>
+    <link rel="stylesheet" href="../Estilos/estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-links">
+                <a href="../index.html">Inicio</a>
+                <a href="Camisas.html">Apparel</a>
+                <a href="Pantalones.html">Bottoms</a>
+                <a href="Zapatos.html">Sneakers</a>
+            </div>
+
+ 
+            <div class="header-cart">
+                <a class="btn-cart-header" href="carrito.html">
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
+ 
+    <main class="main-container">
+        <div class="producto-detalle">
+            <img src="../Imagenes/C7.jpg" alt="Noir Strike Shirt">
+ 
+            <div class="producto-info-detalle">
+                <h2>Noir Strike</h2>
+                <p class="descripcion">Camisa negra con finas rayas blancas y un llamativo estampado gótico en el pecho.</p>
+ 
+                <div class="product-card" data-id="noir-strike-shirt" data-name="Noir Strike Shirt">
+                    <div class="price-tag">
+                    </div>
+ 
+                    <div class="size-selector">
+                        <label for="size">Talla:</label>
+                        <select id="size" onchange="updatePrice()">
+                            <option value="S" data-price="40.00">S - $40.00</option>
+                            <option value="M" data-price="45.00" selected>M - $45.00</option>
+                            <option value="L" data-price="45.00">L - $45.00</option>
+                            <option value="XL" data-price="50.00">XL - $50.00</option>
+                        </select>
+                    </div>
+ 
+                    <div class="product-actions">
+                        <button class="btn-cart" onclick="addToCart()">Agregar al carrito</button>
+                        <button class="btn-buy" onclick="buyNow()">Comprar ahora</button>
+                    </div>
+                </div>
+ 
+                <button class="btn-volver" onclick="window.history.back();">VOLVER</button>
+            </div>
+        </div>
+    </main>
+ 
+    <script src="carrito.js"></script>
+</body>
+</html>
+ 

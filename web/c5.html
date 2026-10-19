@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Bond | Urban Void</title>
+    <link rel="stylesheet" href="../Estilos/estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+                     <div class="nav-links">
+                <a href="../index.html">Inicio</a>
+                <a href="Camisas.html">Apparel</a>
+                <a href="Pantalones.html">Bottoms</a>
+                <a href="Zapatos.html">Sneakers</a>
+            </div>
+
+            <div class="header-cart">
+                <a class="btn-cart-header" href="carrito.html">
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="producto-detalle">
+            <img src="../Imagenes/C5.jpg" alt="Sacred Bond">
+
+            <div class="producto-info-detalle">
+                <p class="descripcion">Playera negra oversized con un llamativo estampado frontal de querubines en un bosque y la palabra "EMOTION" en tipografía gótica distorsionada. Una prenda cómoda y llena de estilo, perfecta para destacar con un look urbano o Y2K.</p>
+
+                <div class="product-card" data-id="c5" data-name="Sacred Bond" data-price="34.99">
+                    <div class="price-tag">
+                        Precio: $<span id="product-price">34.99</span>
+                    </div>
+
+                    <div class="size-selector">
+                        <label for="size">Talla:</label>
+                        <select id="size" onchange="updatePrice()">
+                            <option value="S" data-price="34.99">S - $34.99</option>
+                            <option value="M" data-price="34.99" selected>M - $34.99</option>
+                            <option value="L" data-price="34.99">L - $34.99</option>
+                            <option value="XL" data-price="34.99">XL - $34.99</option>
+                        </select>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-cart" onclick="addToCart()">Agregar al carrito</button>
+                        <button class="btn-buy" onclick="buyNow()">Comprar ahora</button>
+                    </div>
+                </div>
+
+                <button class="btn-volver" onclick="window.history.back();">VOLVER</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="carrito.js"></script>
+</body>
+</html>

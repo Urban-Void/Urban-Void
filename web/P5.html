@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalón P5 | Urban Void</title>
+    <link rel="stylesheet" href="../Estilos/estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+               <div class="nav-links">
+                <a href="../index.html">Inicio</a>
+                <a href="Camisas.html">Apparel</a>
+                <a href="Pantalones.html">Bottoms</a>
+                <a href="Zapatos.html">Sneakers</a>
+            </div>
+
+            <div class="header-cart">
+                <a class="btn-cart-header" href="carrito.html">
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="producto-detalle">
+            <img src="../Imagenes/P5.jpeg" alt="Pantalón P5">
+
+            <div class="producto-info-detalle">
+                <p class="descripcion">Pantalón cargo baggy de estilo Y2K/streetwear con estampado de camuflaje en tonos blanco, gris y taupe. De corte holgado para máxima comodidad.</p>
+
+                <div class="product-card" data-id="p5" data-name="Pantalón P5" data-price="34.99">
+                    <div class="price-tag">
+                        Precio: $<span id="product-price">34.99</span>
+                    </div>
+
+                    <div class="size-selector">
+                        <label for="size">Talla:</label>
+                        <select id="size" onchange="updatePrice()">
+                            <option value="28" data-price="34.99">28 - $34.99</option>
+                            <option value="30" data-price="34.99">30 - $34.99</option>
+                            <option value="32" data-price="34.99" selected>32 - $34.99</option>
+                            <option value="34" data-price="34.99">34 - $34.99</option>
+                            <option value="36" data-price="34.99">36 - $34.99</option>
+                        </select>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-cart" onclick="addToCart()">Agregar al carrito</button>
+                        <button class="btn-buy" onclick="buyNow()">Comprar ahora</button>
+                    </div>
+                </div>
+
+                <button class="btn-volver" onclick="window.history.back();">VOLVER</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="carrito.js"></script>
+</body>
+</html>

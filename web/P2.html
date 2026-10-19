@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalón P2 | Urban Void</title>
+    <link rel="stylesheet" href="../Estilos/estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+                      <div class="nav-links">
+                <a href="../index.html">Inicio</a>
+                <a href="Camisas.html">Apparel</a>
+                <a href="Pantalones.html">Bottoms</a>
+                <a href="Zapatos.html">Sneakers</a>
+            </div>
+
+
+            <div class="header-cart">
+                <a class="btn-cart-header" href="carrito.html">
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="producto-detalle">
+            <img src="../Imagenes/P2.jpeg" alt="Pantalón P2">
+
+            <div class="producto-info-detalle">
+                <p class="descripcion">Jean baggy negro desgastado con calaveras en los bolsillos, tipografía vintage y estampado de alas en las piernas. Ideal para un look streetwear o Y2K.</p>
+
+                <div class="product-card" data-id="p2" data-name="Pantalón P2" data-price="34.99">
+                    <div class="price-tag">
+                        Precio: $<span id="product-price">34.99</span>
+                    </div>
+
+                    <div class="size-selector">
+                        <label for="size">Talla:</label>
+                        <select id="size" onchange="updatePrice()">
+                            <option value="28" data-price="34.99">28 - $34.99</option>
+                            <option value="30" data-price="34.99">30 - $34.99</option>
+                            <option value="32" data-price="34.99" selected>32 - $34.99</option>
+                            <option value="34" data-price="34.99">34 - $34.99</option>
+                            <option value="36" data-price="34.99">36 - $34.99</option>
+                        </select>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-cart" onclick="addToCart()">Agregar al carrito</button>
+                        <button class="btn-buy" onclick="buyNow()">Comprar ahora</button>
+                    </div>
+                </div>
+
+                <button class="btn-volver" onclick="window.history.back();">VOLVER</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="carrito.js"></script>
+</body>
+</html>
