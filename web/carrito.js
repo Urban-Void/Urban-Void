@@ -1,11 +1,8 @@
-/* Urban Void - lógica del carrito
-   Se incluye en TODAS las páginas con: <script src="carrito.js"></script>
-   Los productos se guardan en localStorage, así que el carrito
-   sobrevive al cambiar de página y al recargar. */
+
 
 const CART_KEY = 'urbanvoid_cart';
 
-/* ---------- Datos ---------- */
+
 
 function getCart() {
     try {
@@ -24,7 +21,7 @@ function formatPrice(n) {
     return '$' + Number(n).toFixed(2);
 }
 
-/* ---------- Contador del header (todas las páginas) ---------- */
+
 
 function updateCartCount() {
     const total = getCart().reduce((sum, item) => sum + item.qty, 0);
@@ -33,7 +30,7 @@ function updateCartCount() {
     });
 }
 
-/* ---------- Página de producto ---------- */
+
 
 function updatePrice() {
     const select = document.getElementById('size');
@@ -59,7 +56,7 @@ function addToCart() {
     };
 
     const cart = getCart();
-    // Mismo producto + misma talla = suma cantidad; otra talla = línea nueva
+ 
     const existing = cart.find(i => i.id === item.id && i.size === item.size);
     if (existing) {
         existing.qty += 1;
@@ -93,7 +90,7 @@ function showToast(message) {
     showToast.timer = setTimeout(() => { toast.style.opacity = '0'; }, 2000);
 }
 
-/* ---------- Página carrito.html ---------- */
+
 
 function changeQty(index, delta) {
     const cart = getCart();
@@ -177,7 +174,60 @@ function renderCart() {
 
     totalEl.textContent = formatPrice(total);
 }
+/* ---------- Pago simulado ---------- */
 
+function openCheckout() {
+    document.getElementById('checkout-total').textContent =
+        document.getElementById('cart-total').textContent;
+    document.getElementById('checkout').hidden = false;
+}
+
+function closeCheckout() {
+    document.getElementById('checkout').hidden = true;
+}
+
+function initCheckout() {
+    const form = document.getElementById('checkout-form');
+    if (!form) return;
+
+    // Formato automático: espacios cada 4 dígitos y "/" en la fecha
+    form.tarjeta.addEventListener('input', () => {
+        const d = form.tarjeta.value.replace(/\D/g, '').slice(0, 16);
+        form.tarjeta.value = d.replace(/(.{4})/g, '$1 ').trim();
+    });
+    form.vence.addEventListener('input', () => {
+        const d = form.vence.value.replace(/\D/g, '').slice(0, 4);
+        form.vence.value = d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : d;
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const error = document.getElementById('checkout-error');
+        const numero = form.tarjeta.value.replace(/\s/g, '');
+
+        if (!form.nombre.value.trim()) return error.textContent = 'Escribe el nombre de la tarjeta.';
+        if (!/^\d{16}$/.test(numero)) return error.textContent = 'El número debe tener 16 dígitos.';
+        if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(form.vence.value)) return error.textContent = 'Fecha inválida (MM/AA).';
+        if (!/^\d{3}$/.test(form.cvv.value)) return error.textContent = 'El CVV debe tener 3 dígitos.';
+        error.textContent = '';
+
+        const btn = document.getElementById('pay-btn');
+        btn.disabled = true;
+        btn.textContent = 'Procesando...';
+
+        // Fingimos que el banco tarda un poco en responder
+        setTimeout(() => {
+            const pedido = 'UV-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('checkout-box').innerHTML =
+                '<h3>¡Pago aprobado!</h3>' +
+                '<p style="margin:12px 0">Gracias por tu compra, ' + form.nombre.value.trim().split(' ')[0] + '.</p>' +
+                '<p style="color:#aaa">Pedido <strong style="color:#fff">' + pedido + '</strong></p>' +
+                '<div class="cart-buttons" style="margin-top:20px">' +
+                '<a class="primary" href="../index.html">Volver a la tienda</a></div>';
+            clearCart(); // vacía el carrito
+        }, 1800);
+    });
+}
 /* ---------- Arranque ---------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -192,4 +242,10 @@ window.addEventListener('storage', (e) => {
         updateCartCount();
         renderCart();
     }
+});
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+    updatePrice();
+    renderCart();
+    initCheckout();   // <-- nueva
 });
