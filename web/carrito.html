@@ -6,7 +6,7 @@
     <title>Carrito | Urban Void</title>
     <link rel="stylesheet" href="../Estilos/estilos.css">
     <style>
-        /* Puedes mover esto a estilos.css */
+    
         .cart-page { max-width: 900px; margin: 40px auto; padding: 0 20px; color: #fff; }
         .cart-page h2 { margin-bottom: 24px; }
         #cart-items { list-style: none; padding: 0; margin: 0; }
@@ -83,7 +83,32 @@
             </div>
         </div>
     </main>
-
+<div id="checkout" class="modal" hidden>
+    <div class="modal-box" id="checkout-box">
+        <form id="checkout-form" novalidate>
+            <h3>Pago</h3>
+            <label>Nombre en la tarjeta
+                <input name="nombre" autocomplete="off">
+            </label>
+            <label>Número de tarjeta
+                <input name="tarjeta" inputmode="numeric" maxlength="19" placeholder="4242 4242 4242 4242" autocomplete="off">
+            </label>
+            <div class="fila">
+                <label>Vence
+                    <input name="vence" maxlength="5" placeholder="MM/AA" autocomplete="off">
+                </label>
+                <label>CVV
+                    <input name="cvv" inputmode="numeric" maxlength="3" placeholder="123" autocomplete="off">
+                </label>
+            </div>
+            <p id="checkout-error" role="alert"></p>
+            <div class="cart-buttons">
+                <button type="button" onclick="closeCheckout()">Cancelar</button>
+                <button type="submit" class="primary" id="pay-btn">Pagar <span id="checkout-total"></span></button>
+            </div>
+        </form>
+    </div>
+</div>
     <script src="carrito.js"></script>
 </body>
 </html>
